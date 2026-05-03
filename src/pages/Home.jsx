@@ -31,16 +31,30 @@ export default function Home() {
       {/* 1. Hero Section */}
       <section className="hero-section" style={{
         position: 'relative',
-        padding: '100px 0',
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundImage: 'linear-gradient(rgba(13, 46, 16, 0.8), rgba(13, 46, 16, 0.5)), url("https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=2000&auto=format&fit=crop")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         width: '100%',
-        textAlign: 'center'
+        textAlign: 'center',
+        overflow: 'hidden',
+        paddingTop: '70px'
       }}>
+        {/* Blurred Background Overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url("/bannar.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(3px)',
+          transform: 'scale(1.05)', // Prevent white edges from blur
+          zIndex: 1
+        }}></div>
+
         <div className="container" style={{ position: 'relative', zIndex: 2, color: 'white' }}>
           <div className="animate__animated animate__fadeIn">
             <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -52,16 +66,16 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="animate__animated animate__fadeInDown hero-title" style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '25px' }}>
+            <h1 className="animate__animated animate__fadeInDown hero-title" style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '25px', textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
               Bringing the <span style={{ color: 'var(--accent-color)' }}>Best Livestock</span> <br /> to Your Doorstep.
             </h1>
 
-            <p className="animate__animated animate__fadeInUp hero-desc" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', marginBottom: '40px', opacity: '0.9', maxWidth: '750px', margin: '0 auto 40px' }}>
+            <p className="animate__animated animate__fadeInUp hero-desc" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', marginBottom: '40px', opacity: '0.9', maxWidth: '750px', margin: '0 auto 40px', textShadow: '0 1px 5px rgba(0,0,0,0.2)' }}>
               Skip the crowded markets. Browse through hundreds of verified, healthy, and premium breeds directly from top-tier farms.
             </p>
 
             <div className="animate__animated animate__fadeInUp" style={{ display: 'flex', gap: '15px', justifyContent: 'center', marginBottom: '50px' }}>
-              <Link to="/animals" className="btn btn-accent animate__animated animate__pulse animate__infinite" style={{ padding: '15px 35px', fontSize: '1.1rem', borderRadius: '50px' }}>
+              <Link to="/animals" className="btn btn-accent animate__animated animate__pulse animate__infinite" style={{ padding: '15px 35px', fontSize: '1.1rem', borderRadius: '50px', boxShadow: '0 10px 20px rgba(0,0,0,0.2)' }}>
                 Explore Collection <IconRight />
               </Link>
             </div>

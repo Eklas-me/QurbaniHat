@@ -89,15 +89,13 @@ ul {
 
 /* Navbar */
 header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 5000;
   width: 100%;
-  height: 70px; /* Fixed height for consistency */
+  height: 70px;
+  transition: all 0.3s ease;
 }
 
 .navbar {

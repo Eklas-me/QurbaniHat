@@ -1,43 +1,65 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Safe SVG Icons
+  // Dynamic Styles Logic
+  const shouldBeSolid = !isHome || isScrolled;
+  const navBg = shouldBeSolid ? 'white' : 'transparent';
+  const navTextColor = shouldBeSolid ? 'var(--primary-color)' : 'white';
+  const navShadow = shouldBeSolid ? '0 2px 20px rgba(0, 0, 0, 0.1)' : 'none';
+  const logoColor = shouldBeSolid ? 'var(--primary-color)' : 'white';
+
   const IconMenu = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>;
   const IconClose = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
 
   return (
-    <header>
+    <header style={{ background: navBg, boxShadow: navShadow, backdropFilter: shouldBeSolid ? 'blur(10px)' : 'none' }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '15px 20px' }}>
         
         {/* Logo */}
-        <Link to="/" className="logo" onClick={closeMenu} style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--primary-color)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <Link to="/" className="logo" onClick={closeMenu} style={{ fontSize: '1.5rem', fontWeight: '800', color: logoColor, display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span>🐂</span> QurbaniHat
         </Link>
         
         {/* Desktop Navigation */}
         <nav className="desktop-nav" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-          <NavLink to="/" className={({ isActive }) => isActive ? "active-link" : ""}>Home</NavLink>
-          <NavLink to="/animals" className={({ isActive }) => isActive ? "active-link" : ""}>All Animals</NavLink>
+          <NavLink to="/" className={({ isActive }) => isActive ? "active-link" : ""} style={{ color: navTextColor, textDecoration: 'none', fontWeight: '600' }}>Home</NavLink>
+          <NavLink to="/animals" className={({ isActive }) => isActive ? "active-link" : ""} style={{ color: navTextColor, textDecoration: 'none', fontWeight: '600' }}>All Animals</NavLink>
           
           <div style={{ marginLeft: '10px' }}>
             {user ? (
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                 <Link to="/my-profile">
-                  <img src={user.image} alt={user.name} style={{ width: '35px', height: '35px', borderRadius: '50%', border: '2px solid var(--primary-color)', cursor: 'pointer', transition: '0.3s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
+                  <img src={user.image} alt={user.name} style={{ width: '35px', height: '35px', borderRadius: '50%', border: `2px solid ${logoColor}`, cursor: 'pointer', transition: '0.3s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
                 </Link>
-                <button onClick={logout} className="btn btn-outline" style={{ padding: '6px 15px', fontSize: '0.85rem' }}>Logout</button>
+                <button onClick={logout} className="btn btn-outline" style={{ padding: '6px 15px', fontSize: '0.85rem', color: navTextColor, borderColor: navTextColor }}>Logout</button>
               </div>
             ) : (
               <div style={{ display: 'flex', gap: '10px' }}>
-                <Link to="/login" className="btn btn-outline" style={{ padding: '8px 20px' }}>Login</Link>
+                <Link to="/login" className="btn btn-outline" style={{ padding: '8px 20px', color: navTextColor, borderColor: navTextColor }}>Login</Link>
                 <Link to="/register" className="btn btn-primary" style={{ padding: '8px 20px' }}>Register</Link>
               </div>
             )}
@@ -45,7 +67,7 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Menu Toggle */}
-        <button className="mobile-menu-btn" onClick={toggleMenu} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-color)', display: 'none' }}>
+        <button className="mobile-menu-btn" onClick={toggleMenu} style={{ background: 'none', border: 'none', cursor: 'pointer', color: navTextColor, display: 'none' }}>
           {isMenuOpen ? <IconClose /> : <IconMenu />}
         </button>
       </div>
@@ -95,8 +117,9 @@ export default function Navbar() {
       {isMenuOpen && <div onClick={closeMenu} style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.3)', zIndex: 2500 }}></div>}
 
       <style>{`
-        .active-link { color: var(--primary-color) !important; font-weight: 700; }
-        .mobile-link { font-size: 1.2rem; font-weight: 600; color: #333; padding: 10px 0; border-bottom: 1px solid #f9f9f9; }
+        .active-link { color: var(--accent-color) !important; font-weight: 700; }
+        .active-link-white { color: var(--accent-color) !important; font-weight: 700; }
+        .mobile-link { font-size: 1.2rem; font-weight: 600; color: #333; padding: 10px 0; border-bottom: 1px solid #f9f9f9; text-decoration: none; }
         .mobile-link.active { color: var(--primary-color); }
         
         @media (max-width: 768px) {
