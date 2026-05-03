@@ -15,7 +15,7 @@ app.use(cors({
   credentials: true,
 }));
 
-// Inline DB and Auth logic for Vercel stability
+// MongoDB Connection
 let client;
 const getClient = () => {
     if (!client) {

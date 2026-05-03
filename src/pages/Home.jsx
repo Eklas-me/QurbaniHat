@@ -20,12 +20,11 @@ export default function Home() {
       });
   }, []);
 
-  // Simple SVG components to avoid library issues
-  const IconRight = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '5px' }}><path d="m9 18 6-6-6-6"/></svg>;
-  const IconAward = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>;
-  const IconShield = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
-  const IconTruck = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>;
-  const IconInfo = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>;
+  const IconRight = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '5px' }}><path d="m9 18 6-6-6-6" /></svg>;
+  const IconAward = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" /></svg>;
+  const IconShield = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>;
+  const IconTruck = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" /></svg>;
+  const IconInfo = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>;
 
   return (
     <div className="home-container" style={{ overflowX: 'hidden' }}>
@@ -52,26 +51,26 @@ export default function Home() {
                 Booking Open 2026
               </span>
             </div>
-            
+
             <h1 className="animate__animated animate__fadeInDown hero-title" style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '25px' }}>
-              Bringing the <span style={{ color: 'var(--accent-color)' }}>Best Livestock</span> <br/> to Your Doorstep.
+              Bringing the <span style={{ color: 'var(--accent-color)' }}>Best Livestock</span> <br /> to Your Doorstep.
             </h1>
-            
+
             <p className="animate__animated animate__fadeInUp hero-desc" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', marginBottom: '40px', opacity: '0.9', maxWidth: '750px', margin: '0 auto 40px' }}>
               Skip the crowded markets. Browse through hundreds of verified, healthy, and premium breeds directly from top-tier farms.
             </p>
-            
+
             <div className="animate__animated animate__fadeInUp" style={{ display: 'flex', gap: '15px', justifyContent: 'center', marginBottom: '50px' }}>
               <Link to="/animals" className="btn btn-accent animate__animated animate__pulse animate__infinite" style={{ padding: '15px 35px', fontSize: '1.1rem', borderRadius: '50px' }}>
                 Explore Collection <IconRight />
               </Link>
             </div>
-            
+
             {/* Responsive Badges Grid */}
-            <div className="animate__animated animate__fadeInUp badge-grid" style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
-              gap: '15px', 
+            <div className="animate__animated animate__fadeInUp badge-grid" style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+              gap: '15px',
               maxWidth: '800px',
               margin: '0 auto'
             }}>
@@ -81,10 +80,10 @@ export default function Home() {
                 { icon: <IconTruck />, text: "Safe Delivery" },
                 { icon: <IconInfo />, text: "Fixed Price" }
               ].map((stat, i) => (
-                <div key={i} style={{ 
-                  background: 'rgba(255,255,255,0.1)', 
-                  backdropFilter: 'blur(10px)', 
-                  padding: '12px', 
+                <div key={i} style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  backdropFilter: 'blur(10px)',
+                  padding: '12px',
                   borderRadius: '16px',
                   display: 'flex',
                   alignItems: 'center',
@@ -110,7 +109,7 @@ export default function Home() {
             </h2>
             <p style={{ color: '#666', fontSize: '1.1rem', marginTop: '10px' }}>Handpicked healthy livestock for your sacred Qurbani</p>
           </div>
-          
+
           {loading ? (
             <div className="loading-spinner">Loading premium collection...</div>
           ) : (
@@ -123,12 +122,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Extra Section: Qurbani Tips - RESTORED PREMIUM LOOK */}
+      {/* Extra Section: Qurbani Tips */}
       <section style={{ padding: '120px 0', backgroundColor: '#f4f7f4', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-100px', left: '-100px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(27, 94, 32, 0.05) 0%, transparent 70%)' }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="animate__animated animate__fadeInUp" style={{ textAlign: 'center', marginBottom: '80px' }}>
-             <div style={{ display: 'inline-block', padding: '8px 20px', borderRadius: '50px', background: 'rgba(27, 94, 32, 0.1)', color: 'var(--primary-color)', fontWeight: '700', fontSize: '0.85rem', marginBottom: '20px', letterSpacing: '1px' }}>
+            <div style={{ display: 'inline-block', padding: '8px 20px', borderRadius: '50px', background: 'rgba(27, 94, 32, 0.1)', color: 'var(--primary-color)', fontWeight: '700', fontSize: '0.85rem', marginBottom: '20px', letterSpacing: '1px' }}>
               EXPERT ADVICE
             </div>
             <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', color: 'var(--primary-color)', fontWeight: '800' }}>
@@ -152,7 +151,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Extra Section: Top Breeds - RESTORED PREMIUM LOOK */}
+      {/* Extra Section: Top Breeds */}
       <section style={{ padding: '120px 0', backgroundColor: 'white' }}>
         <div className="container">
           <div className="animate__animated animate__fadeInUp" style={{ textAlign: 'center', marginBottom: '80px' }}>
