@@ -23,7 +23,10 @@ export default function Register() {
     try {
       const res = await register(name, email, password, photoURL);
       if (res && res.data) {
+        toast.success("Registration successful! Please login.");
         navigate('/login');
+      } else if (res && res.error) {
+        toast.error(res.error.message || "Registration failed");
       }
     } catch (err) {
       toast.error(err.message || 'Registration failed!');

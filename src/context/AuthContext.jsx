@@ -17,47 +17,44 @@ export function AuthProvider({ children }) {
     if (isPending) {
       setLoading(true);
     } else {
-      setUser(session?.user || null);
+      const newUser = session?.user || null;
+      // If user just logged in (from null to user)
+      if (!user && newUser) {
+        // Only show toast if it's not the initial load of a persistent session
+        // This is a simple way to show toast after social login redirect
+        const hasShownToast = sessionStorage.getItem('login_toast_shown');
+        if (!hasShownToast) {
+          toast.success(`Welcome back, ${newUser.name}!`);
+          sessionStorage.setItem('login_toast_shown', 'true');
+        }
+      }
+      setUser(newUser);
       setLoading(false);
     }
-  }, [session, isPending]);
+  }, [session, isPending, user]);
 
   // Register with Email and Password
   async function register(name, email, password, photoURL) {
-    const res = await authClient.signUp.email({
+    return await authClient.signUp.email({
       email,
       password,
       name,
       image: photoURL,
-    }, {
-      onSuccess: () => {
-        toast.success("Registration successful!");
-      },
-      onError: (ctx) => {
-        toast.error(ctx.error.message || "Failed to register");
-      }
     });
-    return res;
   }
 
   // Login with Email and Password
   async function login(email, password) {
-    const res = await authClient.signIn.email({
+    return await authClient.signIn.email({
       email,
       password
-    }, {
-      onSuccess: () => {
-        toast.success("Login successful!");
-      },
-      onError: (ctx) => {
-        toast.error(ctx.error.message || "Login failed");
-      }
     });
-    return res;
   }
 
   // Google Sign In
   async function loginWithGoogle() {
+    // Clear toast flag before redirecting to ensure it shows when coming back
+    sessionStorage.removeItem('login_toast_shown');
     return authClient.signIn.social({
         provider: "google",
         callbackURL: window.location.origin,
@@ -68,15 +65,16 @@ export function AuthProvider({ children }) {
   async function logout() {
     await authClient.signOut();
     setUser(null);
+    sessionStorage.removeItem('login_toast_shown');
+    toast.success("Logged out successfully");
   }
 
   // Update Profile (Name and Image)
   async function updateUserProfile(name, imageUrl) {
-    const res = await authClient.updateUser({
+    return await authClient.updateUser({
       name: name,
       image: imageUrl
     });
-    return res;
   }
 
   const value = {

@@ -24,7 +24,12 @@ export default function Login() {
     try {
       const res = await login(email, password);
       if (res && res.data) {
+        toast.success("Login successful!");
+        // Set flag to prevent AuthProvider from showing another toast
+        sessionStorage.setItem('login_toast_shown', 'true');
         navigate(from, { replace: true });
+      } else if (res && res.error) {
+        toast.error(res.error.message || "Login failed");
       }
     } catch (err) {
       toast.error(err.message || 'Login failed!');
@@ -34,7 +39,6 @@ export default function Login() {
 
   const handleGoogleLogin = async () => {
     try {
-      // For better-auth, social login usually triggers a redirect
       await loginWithGoogle();
     } catch (err) {
       toast.error(err.message || 'Google Login failed!');
