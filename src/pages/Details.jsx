@@ -47,15 +47,15 @@ export default function Details() {
   if (!animal) return null;
 
   return (
-    <div className="container" style={{ padding: '60px 24px' }}>
+    <div className="container" style={{ padding: '80px 20px 60px' }}>
       {/* Back Link */}
       <div style={{ marginBottom: '40px' }}>
-        <Link to="/animals" style={{ display: 'flex', alignItems: 'center', color: '#666', fontWeight: '600', transition: '0.3s' }}>
+        <Link to="/animals" style={{ display: 'flex', alignItems: 'center', color: '#666', fontWeight: '600' }}>
           <IconBack /> Back to Collection
         </Link>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', alignItems: 'start' }}>
+      <div className="details-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'start' }}>
         
         {/* Left: Clear Image Showcase */}
         <div className="animate__animated animate__fadeInLeft">
@@ -63,7 +63,7 @@ export default function Details() {
             <img 
               src={animal.image} 
               alt={animal.name} 
-              style={{ width: '100%', height: 'auto', maxHeight: '600px', borderRadius: '24px', objectFit: 'contain', background: '#f8f9f8' }} 
+              style={{ width: '100%', height: 'auto', maxHeight: '500px', borderRadius: '24px', objectFit: 'contain', background: '#f8f9f8' }} 
             />
           </div>
           
@@ -76,23 +76,23 @@ export default function Details() {
         {/* Right: Info & Full Booking Form */}
         <div className="animate__animated animate__fadeInRight">
           <div style={{ marginBottom: '30px' }}>
-            <span style={{ background: 'var(--accent-color)', color: 'white', padding: '6px 18px', borderRadius: '50px', fontSize: '0.8rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>
+            <span style={{ background: 'var(--accent-color)', color: 'white', padding: '6px 18px', borderRadius: '50px', fontSize: '0.8rem', fontWeight: '800', textTransform: 'uppercase' }}>
               {animal.category}
             </span>
-            <h1 style={{ fontSize: '3.5rem', fontWeight: '800', color: 'var(--primary-color)', margin: '15px 0' }}>{animal.name}</h1>
-            <p style={{ fontSize: '1.4rem', color: '#e65100', fontWeight: '900' }}>৳ {animal.price.toLocaleString()}</p>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: '800', color: 'var(--primary-color)', margin: '15px 0' }}>{animal.name}</h1>
+            <p style={{ fontSize: '1.5rem', color: '#e65100', fontWeight: '900' }}>৳ {animal.price.toLocaleString()}</p>
           </div>
 
           {/* Detailed Specs Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '40px' }}>
             {[
               { icon: <IconScale />, label: "Weight", value: animal.weight + " kg" },
               { icon: <IconMap />, label: "Location", value: animal.location },
               { icon: <IconAward />, label: "Breed", value: animal.breed },
               { icon: <IconAward />, label: "Age", value: animal.age + " Years" }
             ].map((spec, i) => (
-              <div key={i} style={{ background: 'white', padding: '20px', borderRadius: '20px', boxShadow: '0 5px 15px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#888', fontSize: '0.85rem', marginBottom: '8px' }}>
+              <div key={i} style={{ background: 'white', padding: '20px', borderRadius: '20px', border: '1px solid #f0f0f0', textAlign: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#888', fontSize: '0.8rem', marginBottom: '5px' }}>
                   {spec.icon} {spec.label}
                 </div>
                 <span style={{ fontWeight: '800', fontSize: '1.1rem', color: '#333' }}>{spec.value}</span>
@@ -100,31 +100,31 @@ export default function Details() {
             ))}
           </div>
 
-          {/* Full Booking Form - Required Fields */}
-          <div style={{ background: 'white', padding: '40px', borderRadius: '32px', boxShadow: '0 20px 60px rgba(0,0,0,0.08)', border: '1px solid #eee' }}>
-            <h3 style={{ fontSize: '1.8rem', color: 'var(--primary-color)', marginBottom: '25px', textAlign: 'center' }}>Reserve Now</h3>
-            <form onSubmit={handleBooking} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              <div className="form-group" style={{ marginBottom: 0 }}>
-                <label style={{ fontSize: '0.9rem', marginBottom: '5px' }}>Full Name</label>
-                <input type="text" placeholder="Enter your full name" required style={{ padding: '12px' }} />
+          {/* Full Booking Form - FIXED RESPONSIVE FORM */}
+          <div style={{ background: 'white', padding: '40px 30px', borderRadius: '32px', boxShadow: '0 20px 60px rgba(0,0,0,0.08)', border: '1px solid #eee' }}>
+            <h3 style={{ fontSize: '1.8rem', color: 'var(--primary-color)', marginBottom: '30px', textAlign: 'center', fontWeight: '800' }}>Reserve Now</h3>
+            <form onSubmit={handleBooking} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#444' }}>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required style={{ width: '100%', padding: '14px', borderRadius: '12px', border: '1px solid #ddd' }} />
               </div>
               
-              <div className="form-group" style={{ marginBottom: 0 }}>
-                <label style={{ fontSize: '0.9rem', marginBottom: '5px' }}>Email Address</label>
-                <input type="email" placeholder="Enter your email" required style={{ padding: '12px' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#444' }}>Email Address</label>
+                <input type="email" placeholder="Enter your email" required style={{ width: '100%', padding: '14px', borderRadius: '12px', border: '1px solid #ddd' }} />
               </div>
 
-              <div className="form-group" style={{ marginBottom: 0 }}>
-                <label style={{ fontSize: '0.9rem', marginBottom: '5px' }}>Phone Number</label>
-                <input type="tel" placeholder="Enter your phone number" required style={{ padding: '12px' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#444' }}>Phone Number</label>
+                <input type="tel" placeholder="Enter your phone number" required style={{ width: '100%', padding: '14px', borderRadius: '12px', border: '1px solid #ddd' }} />
               </div>
 
-              <div className="form-group" style={{ marginBottom: 0 }}>
-                <label style={{ fontSize: '0.9rem', marginBottom: '5px' }}>Full Address</label>
-                <input type="text" placeholder="Enter your shipping address" required style={{ padding: '12px' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#444' }}>Full Address</label>
+                <textarea placeholder="Enter your shipping address" required style={{ width: '100%', padding: '14px', borderRadius: '12px', border: '1px solid #ddd', minHeight: '80px', fontFamily: 'inherit' }}></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '18px', fontSize: '1.1rem', borderRadius: '15px', marginTop: '10px' }}>
+              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '18px', fontSize: '1.1rem', borderRadius: '15px', marginTop: '10px', fontWeight: '700' }}>
                 Confirm Booking Request
               </button>
             </form>

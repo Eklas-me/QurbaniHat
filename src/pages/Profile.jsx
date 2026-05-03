@@ -12,24 +12,26 @@ export default function Profile() {
   if (!user) return null;
 
   return (
-    <div className="container" style={{ padding: '40px 0' }}>
-      <h1 style={{ color: 'var(--primary-color)', marginBottom: '30px', textAlign: 'center' }}>My Profile</h1>
-      
-      <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: 'var(--border-radius)', boxShadow: 'var(--box-shadow)', display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '800px', margin: '0 auto' }}>
+    <div style={{ padding: '100px 20px 60px' }}> {/* Increased padding to fix overlap */}
+      <div className="container animate__animated animate__fadeIn" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <h1 style={{ color: 'var(--primary-color)', marginBottom: '40px', textAlign: 'center', fontWeight: '800', fontSize: '2.5rem' }}>My Profile</h1>
         
-        <img 
-          src={user.image || 'https://via.placeholder.com/150'} 
-          alt={user.name || 'User'} 
-          style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', border: '4px solid var(--primary-color)', marginBottom: '20px' }} 
-        />
-        
-        <div style={{ textAlign: 'center', width: '100%' }}>
-          <h2 style={{ marginBottom: '10px' }}>{user.name || 'No Name Provided'}</h2>
-          <p style={{ color: '#666', fontSize: '1.1rem', marginBottom: '30px' }}>{user.email}</p>
+        <div style={{ backgroundColor: 'white', padding: '50px 40px', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid #f0f0f0' }}>
           
-          <Link to="/update-profile" className="btn btn-primary" style={{ minWidth: '200px' }}>
-            Update Information
-          </Link>
+          <img 
+            src={user.image || 'https://via.placeholder.com/150'} 
+            alt={user.name || 'User'} 
+            style={{ width: '160px', height: '160px', borderRadius: '50%', objectFit: 'cover', border: '5px solid var(--primary-color)', marginBottom: '30px', boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }} 
+          />
+          
+          <div style={{ textAlign: 'center', width: '100%' }}>
+            <h2 style={{ fontSize: '2rem', marginBottom: '10px', color: '#333', fontWeight: '700' }}>{user.name || 'User'}</h2>
+            <p style={{ color: '#666', fontSize: '1.2rem', marginBottom: '40px' }}>{user.email}</p>
+            
+            <Link to="/update-profile" className="btn btn-primary" style={{ padding: '15px 40px', borderRadius: '50px', fontSize: '1.1rem' }}>
+              Update Information
+            </Link>
+          </div>
         </div>
       </div>
     </div>

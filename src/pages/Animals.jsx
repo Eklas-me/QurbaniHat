@@ -31,7 +31,6 @@ export default function Animals() {
       const sorted = [...animals].sort((a, b) => b.price - a.price);
       setAnimals(sorted);
     } else {
-      // Refresh to get default order
       setLoading(true);
       fetch('/animals.json')
         .then(res => res.json())
@@ -43,17 +42,33 @@ export default function Animals() {
   };
 
   return (
-    <div className="container" style={{ padding: '40px 0' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap', gap: '20px' }}>
-        <h1 style={{ color: 'var(--primary-color)' }}>All Animals</h1>
+    <div className="container" style={{ padding: '80px 20px 60px' }}>
+      <div className="animals-header" style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        marginBottom: '40px', 
+        flexWrap: 'wrap', 
+        gap: '20px' 
+      }}>
+        <h1 style={{ color: 'var(--primary-color)', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800' }}>All Animals</h1>
         
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <label htmlFor="sort" style={{ fontWeight: 'bold' }}>Sort By Price: </label>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', background: 'white', padding: '10px 20px', borderRadius: '50px', boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }}>
+          <label htmlFor="sort" style={{ fontWeight: '700', color: '#666', fontSize: '0.9rem' }}>Sort By Price: </label>
           <select 
             id="sort" 
             value={sortOrder} 
             onChange={handleSort}
-            style={{ padding: '8px 15px', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ 
+              padding: '5px', 
+              borderRadius: '8px', 
+              border: 'none', 
+              background: 'transparent',
+              fontWeight: '700',
+              color: 'var(--primary-color)',
+              cursor: 'pointer',
+              outline: 'none'
+            }}
           >
             <option value="default">Default</option>
             <option value="lowToHigh">Low to High</option>
@@ -63,7 +78,7 @@ export default function Animals() {
       </div>
 
       {loading ? (
-        <div className="loading-spinner">Loading animals...</div>
+        <div className="loading-spinner">Discovering livestock...</div>
       ) : (
         <div className="animal-grid">
           {animals.map(animal => (
@@ -71,6 +86,20 @@ export default function Animals() {
           ))}
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 600px) {
+          .animals-header {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 15px !important;
+          }
+          .animals-header div {
+            width: 100%;
+            justify-content: space-between;
+          }
+        }
+      `}</style>
     </div>
   );
 }
