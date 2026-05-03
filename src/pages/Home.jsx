@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Info, Award, ShieldCheck, Truck } from 'lucide-react';
 import AnimalCard from '../components/AnimalCard';
 
 export default function Home() {
@@ -20,6 +19,13 @@ export default function Home() {
         setLoading(false);
       });
   }, []);
+
+  // Simple SVG components to avoid library issues
+  const IconRight = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '5px' }}><path d="m9 18 6-6-6-6"/></svg>;
+  const IconAward = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>;
+  const IconShield = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
+  const IconTruck = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>;
+  const IconInfo = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>;
 
   return (
     <div className="home-container">
@@ -53,8 +59,8 @@ export default function Home() {
               Skip the crowded markets. Browse through hundreds of verified, healthy, and premium breeds of cows and goats directly from top-tier farms.
             </p>
             <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '50px' }}>
-              <Link to="/animals" className="btn btn-accent" style={{ padding: '18px 36px', fontSize: '1.1rem' }}>
-                Explore Collection <ChevronRight size={20} />
+              <Link to="/animals" className="btn btn-accent" style={{ padding: '18px 36px', fontSize: '1.1rem', display: 'flex', alignItems: 'center' }}>
+                Explore Collection <IconRight />
               </Link>
             </div>
             
@@ -68,10 +74,10 @@ export default function Home() {
               margin: '0 auto'
             }}>
               {[
-                { icon: <Award size={24} />, text: "100% Organic Feed" },
-                { icon: <ShieldCheck size={24} />, text: "Vet Verified" },
-                { icon: <Truck size={24} />, text: "Safe Delivery" },
-                { icon: <Info size={24} />, text: "Fixed Price" }
+                { icon: <IconAward />, text: "100% Organic Feed" },
+                { icon: <IconShield />, text: "Vet Verified" },
+                { icon: <IconTruck />, text: "Safe Delivery" },
+                { icon: <IconInfo />, text: "Fixed Price" }
               ].map((stat, i) => (
                 <div key={i} style={{ 
                   background: 'rgba(255,255,255,0.1)', 
@@ -110,8 +116,8 @@ export default function Home() {
           )}
           
           <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <Link to="/animals" className="btn btn-primary" style={{ padding: '12px 30px' }}>
-              View All Animals <ChevronRight size={20} />
+            <Link to="/animals" className="btn btn-primary" style={{ padding: '12px 30px', display: 'inline-flex', alignItems: 'center' }}>
+              View All Animals <IconRight />
             </Link>
           </div>
         </div>
@@ -136,7 +142,7 @@ export default function Home() {
                 borderLeft: '5px solid var(--accent-color)'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
-                  <Info color="var(--accent-color)" size={28} />
+                  <IconInfo />
                   <h3 style={{ fontSize: '1.3rem' }}>{tip.title}</h3>
                 </div>
                 <p style={{ color: '#555', lineHeight: '1.6' }}>{tip.desc}</p>
