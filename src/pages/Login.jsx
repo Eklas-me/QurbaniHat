@@ -26,7 +26,7 @@ export default function Login() {
       // better-auth might not throw on error, it uses data/error pattern. 
       // Our context handles the toast inside its login function.
       if (res && res.data) {
-        navigate(from, { replace: true });
+        navigate('/', { replace: true });
       }
     } catch (err) {
       toast.error(err.message || 'Login failed!');

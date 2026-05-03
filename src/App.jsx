@@ -6,6 +6,7 @@ import Details from './pages/Details';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import UpdateProfile from './pages/UpdateProfile';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -30,6 +31,11 @@ function App() {
           <Route path="/my-profile" element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          } />
+          <Route path="/update-profile" element={
+            <PrivateRoute>
+              <UpdateProfile />
             </PrivateRoute>
           } />
           <Route path="*" element={<NotFound />} />
