@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173", // Vite frontend
+  origin: ["http://localhost:5173", "https://qurbanihat.vercel.app"],
   credentials: true,
 }));
 

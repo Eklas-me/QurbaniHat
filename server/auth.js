@@ -20,7 +20,7 @@ export const auth = betterAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
         }
     },
-    trustedOrigins: ["http://localhost:5173"],
+    trustedOrigins: ["http://localhost:5173", "https://qurbanihat.vercel.app"],
     advanced: {
         crossSubDomainCookies: {
             enabled: true
