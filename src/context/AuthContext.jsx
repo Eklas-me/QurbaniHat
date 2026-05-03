@@ -9,7 +9,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const { data: session, isPending, error } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,16 +18,16 @@ export function AuthProvider({ children }) {
       setLoading(true);
     } else {
       const newUser = session?.user || null;
-      // If user just logged in (from null to user)
-      if (!user && newUser) {
-        // Only show toast if it's not the initial load of a persistent session
-        // This is a simple way to show toast after social login redirect
-        const hasShownToast = sessionStorage.getItem('login_toast_shown');
-        if (!hasShownToast) {
+      
+      // Handle social login success toast
+      if (newUser && !user) {
+        const needsToast = sessionStorage.getItem('show_welcome_toast');
+        if (needsToast === 'true') {
           toast.success(`Welcome back, ${newUser.name}!`);
-          sessionStorage.setItem('login_toast_shown', 'true');
+          sessionStorage.removeItem('show_welcome_toast');
         }
       }
+      
       setUser(newUser);
       setLoading(false);
     }
@@ -53,8 +53,8 @@ export function AuthProvider({ children }) {
 
   // Google Sign In
   async function loginWithGoogle() {
-    // Clear toast flag before redirecting to ensure it shows when coming back
-    sessionStorage.removeItem('login_toast_shown');
+    // Set flag to show toast after redirect back
+    sessionStorage.setItem('show_welcome_toast', 'true');
     return authClient.signIn.social({
         provider: "google",
         callbackURL: window.location.origin,
@@ -63,9 +63,10 @@ export function AuthProvider({ children }) {
 
   // Logout
   async function logout() {
+    // Clear all flags before signing out
+    sessionStorage.removeItem('show_welcome_toast');
     await authClient.signOut();
     setUser(null);
-    sessionStorage.removeItem('login_toast_shown');
     toast.success("Logged out successfully");
   }
 

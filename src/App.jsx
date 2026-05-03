@@ -15,7 +15,7 @@ import PrivateRoute from './routes/PrivateRoute';
 function App() {
   return (
     <Router>
-      <Toaster position="top-right" />
+      <Toaster position="bottom-right" />
       <Navbar />
       <main style={{ minHeight: '80vh' }}>
         <Routes>

@@ -28,11 +28,11 @@ export default function Home() {
   const IconInfo = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>;
 
   return (
-    <div className="home-container">
+    <div className="home-container" style={{ overflow: 'hidden' }}>
       {/* 1. Hero Section - Centered Layout */}
       <section className="hero-section" style={{
         position: 'relative',
-        minHeight: '600px',
+        minHeight: '650px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -40,37 +40,38 @@ export default function Home() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         width: '100%',
-        textAlign: 'center'
+        textAlign: 'center',
+        overflow: 'hidden'
       }}>
         <div className="container" style={{ position: 'relative', zIndex: 2, color: 'white' }}>
-          <div className="hero-content animate__animated animate__fadeInDown">
+          <div className="animate__animated animate__fadeIn">
             <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center' }}>
-              <span style={{ background: 'rgba(255,255,255,0.2)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.85rem', backdropFilter: 'blur(5px)' }}>
+              <span className="animate__animated animate__fadeInLeft animate__delay-1s" style={{ background: 'rgba(255,255,255,0.2)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.85rem', backdropFilter: 'blur(5px)' }}>
                 Certified Farms Only
               </span>
-              <span style={{ background: 'var(--accent-color)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.85rem', color: 'white' }}>
+              <span className="animate__animated animate__fadeInRight animate__delay-1s" style={{ background: 'var(--accent-color)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.85rem', color: 'white' }}>
                 Booking Open 2026
               </span>
             </div>
-            <h1 style={{ fontSize: '4rem', fontWeight: '800', lineHeight: '1.2', marginBottom: '25px' }}>
+            <h1 className="animate__animated animate__fadeInDown" style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '25px' }}>
               Bringing the <span style={{ color: 'var(--accent-color)' }}>Best Livestock</span> <br/> to Your Doorstep.
             </h1>
-            <p style={{ fontSize: '1.2rem', marginBottom: '40px', opacity: '0.9', maxWidth: '700px', margin: '0 auto 40px' }}>
+            <p className="animate__animated animate__fadeInUp animate__delay-1s" style={{ fontSize: '1.25rem', marginBottom: '40px', opacity: '0.9', maxWidth: '750px', margin: '0 auto 40px' }}>
               Skip the crowded markets. Browse through hundreds of verified, healthy, and premium breeds of cows and goats directly from top-tier farms.
             </p>
-            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '50px' }}>
-              <Link to="/animals" className="btn btn-accent" style={{ padding: '18px 36px', fontSize: '1.1rem', display: 'flex', alignItems: 'center' }}>
+            <div className="animate__animated animate__fadeInUp animate__delay-1s" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '50px' }}>
+              <Link to="/animals" className="btn btn-accent animate__animated animate__pulse animate__infinite" style={{ padding: '18px 40px', fontSize: '1.15rem', display: 'flex', alignItems: 'center', borderRadius: '50px' }}>
                 Explore Collection <IconRight />
               </Link>
             </div>
             
             {/* Badges centered below */}
-            <div style={{ 
+            <div className="animate__animated animate__fadeInUp animate__delay-2s" style={{ 
               display: 'flex', 
               justifyContent: 'center', 
               gap: '20px', 
               flexWrap: 'wrap',
-              maxWidth: '900px',
+              maxWidth: '1000px',
               margin: '0 auto'
             }}>
               {[
@@ -79,10 +80,10 @@ export default function Home() {
                 { icon: <IconTruck />, text: "Safe Delivery" },
                 { icon: <IconInfo />, text: "Fixed Price" }
               ].map((stat, i) => (
-                <div key={i} style={{ 
+                <div key={i} className="animate__animated animate__fadeIn" style={{ 
                   background: 'rgba(255,255,255,0.1)', 
                   backdropFilter: 'blur(10px)', 
-                  padding: '15px 25px', 
+                  padding: '12px 25px', 
                   borderRadius: '15px',
                   display: 'flex',
                   alignItems: 'center',
@@ -90,7 +91,7 @@ export default function Home() {
                   border: '1px solid rgba(255,255,255,0.2)'
                 }}>
                   <div style={{ color: 'var(--accent-color)' }}>{stat.icon}</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '600' }}>{stat.text}</div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: '600' }}>{stat.text}</div>
                 </div>
               ))}
             </div>
@@ -99,24 +100,27 @@ export default function Home() {
       </section>
 
       {/* 2. Featured Animals Section */}
-      <section style={{ padding: '80px 0' }}>
+      <section style={{ padding: '100px 0' }}>
         <div className="container">
-          <h2 style={{ textAlign: 'center', fontSize: '2.5rem', color: 'var(--primary-color)', marginBottom: '50px' }}>
-            Featured Animals
-          </h2>
+          <div className="animate__animated animate__fadeInUp" style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.8rem', color: 'var(--primary-color)', marginBottom: '15px' }}>
+              Featured Animals
+            </h2>
+            <p style={{ color: '#666', fontSize: '1.1rem' }}>Handpicked healthy livestock for your sacred Qurbani</p>
+          </div>
           
           {loading ? (
             <div className="loading-spinner">Loading animals...</div>
           ) : (
-            <div className="animal-grid">
+            <div className="animal-grid animate__animated animate__fadeInUp">
               {featuredAnimals.map(animal => (
                 <AnimalCard key={animal.id} animal={animal} />
               ))}
             </div>
           )}
           
-          <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <Link to="/animals" className="btn btn-primary" style={{ padding: '12px 30px', display: 'inline-flex', alignItems: 'center' }}>
+          <div style={{ textAlign: 'center', marginTop: '60px' }}>
+            <Link to="/animals" className="btn btn-primary animate__animated animate__fadeInUp" style={{ padding: '15px 35px', display: 'inline-flex', alignItems: 'center', borderRadius: '50px', fontSize: '1.1rem' }}>
               View All Animals <IconRight />
             </Link>
           </div>
@@ -124,11 +128,14 @@ export default function Home() {
       </section>
 
       {/* 3. Extra Section: Qurbani Tips */}
-      <section style={{ padding: '80px 0', backgroundColor: 'white' }}>
+      <section style={{ padding: '100px 0', backgroundColor: 'white' }}>
         <div className="container">
-          <h2 style={{ textAlign: 'center', fontSize: '2.5rem', color: 'var(--primary-color)', marginBottom: '50px' }}>
-            Qurbani Tips
-          </h2>
+          <div className="animate__animated animate__fadeInUp" style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.8rem', color: 'var(--primary-color)', marginBottom: '15px' }}>
+              Qurbani Tips
+            </h2>
+            <p style={{ color: '#666', fontSize: '1.1rem' }}>Expert advice on choosing and caring for your livestock</p>
+          </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
             {[
               { title: "Check Teeth for Age", desc: "Ensure the animal meets the Islamic age requirement. Cows should be at least 2 years and goats 1 year old." },
@@ -136,16 +143,17 @@ export default function Home() {
               { title: "Shiny Coat", desc: "A shiny and clean skin coat is a primary indicator of a healthy and well-fed livestock." }
             ].map((tip, i) => (
               <div key={i} className="animate__animated animate__fadeInUp" style={{ 
-                padding: '30px', 
-                borderRadius: '20px', 
+                padding: '40px', 
+                borderRadius: '24px', 
                 backgroundColor: 'var(--background)',
-                borderLeft: '5px solid var(--accent-color)'
+                borderBottom: '6px solid var(--accent-color)',
+                transition: 'transform 0.3s'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
                   <IconInfo />
-                  <h3 style={{ fontSize: '1.3rem' }}>{tip.title}</h3>
+                  <h3 style={{ fontSize: '1.4rem', color: 'var(--primary-color)' }}>{tip.title}</h3>
                 </div>
-                <p style={{ color: '#555', lineHeight: '1.6' }}>{tip.desc}</p>
+                <p style={{ color: '#555', lineHeight: '1.7', fontSize: '1rem' }}>{tip.desc}</p>
               </div>
             ))}
           </div>
@@ -153,11 +161,14 @@ export default function Home() {
       </section>
 
       {/* 4. Extra Section: Top Breeds */}
-      <section style={{ padding: '80px 0' }}>
+      <section style={{ padding: '100px 0' }}>
         <div className="container">
-          <h2 style={{ textAlign: 'center', fontSize: '2.5rem', color: 'var(--primary-color)', marginBottom: '50px' }}>
-            Top Breeds
-          </h2>
+          <div className="animate__animated animate__fadeInUp" style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.8rem', color: 'var(--primary-color)', marginBottom: '15px' }}>
+              Top Breeds
+            </h2>
+            <p style={{ color: '#666', fontSize: '1.1rem' }}>The most popular and high-quality breeds available</p>
+          </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
             {[
               { 
@@ -177,15 +188,16 @@ export default function Home() {
               }
             ].map((breed, i) => (
               <div key={i} className="animate__animated animate__fadeInUp" style={{ 
-                borderRadius: '24px', 
+                borderRadius: '30px', 
                 overflow: 'hidden', 
                 backgroundColor: 'white',
-                boxShadow: 'var(--box-shadow)'
+                boxShadow: 'var(--box-shadow)',
+                border: '1px solid rgba(0,0,0,0.05)'
               }}>
-                <img src={breed.img} alt={breed.name} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
-                <div style={{ padding: '25px' }}>
-                  <h3 style={{ fontSize: '1.4rem', color: 'var(--primary-color)', marginBottom: '10px' }}>{breed.name}</h3>
-                  <p style={{ color: '#666', fontSize: '0.95rem' }}>{breed.desc}</p>
+                <img src={breed.img} alt={breed.name} style={{ width: '100%', height: '240px', objectFit: 'cover' }} />
+                <div style={{ padding: '30px' }}>
+                  <h3 style={{ fontSize: '1.5rem', color: 'var(--primary-color)', marginBottom: '12px' }}>{breed.name}</h3>
+                  <p style={{ color: '#666', fontSize: '1rem', lineHeight: '1.6' }}>{breed.desc}</p>
                 </div>
               </div>
             ))}
