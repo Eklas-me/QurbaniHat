@@ -7,6 +7,10 @@ export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    document.title = "My Profile | QurbaniHat";
+  }, []);
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;

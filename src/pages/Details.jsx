@@ -15,6 +15,7 @@ export default function Details() {
         const found = data.find(item => item.id === parseInt(id));
         if (found) {
           setAnimal(found);
+          document.title = `${found.name} | QurbaniHat`;
         } else {
           toast.error("Animal not found!");
           navigate('/animals');

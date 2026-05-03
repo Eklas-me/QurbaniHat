@@ -7,6 +7,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Home | QurbaniHat";
     fetch('/animals.json')
       .then(res => res.json())
       .then(data => {

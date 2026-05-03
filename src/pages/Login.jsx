@@ -11,6 +11,10 @@ export default function Login() {
 
   const from = location.state?.from?.pathname || '/';
 
+  useEffect(() => {
+    document.title = "Login | QurbaniHat";
+  }, []);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;

@@ -8,6 +8,10 @@ export default function Register() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    document.title = "Register | QurbaniHat";
+  }, []);
+
   const handleRegister = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;

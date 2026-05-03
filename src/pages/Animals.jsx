@@ -7,6 +7,7 @@ export default function Animals() {
   const [sortOrder, setSortOrder] = useState('default');
 
   useEffect(() => {
+    document.title = "All Animals | QurbaniHat";
     fetch('/animals.json')
       .then(res => res.json())
       .then(data => {

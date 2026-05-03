@@ -24,10 +24,10 @@ export default function Footer() {
             <li>Phone: +880 1234 567 890</li>
             <li>Address: 123 Farm Road, Dhaka, Bangladesh</li>
           </ul>
-          <div className="social-links">
-            <a href="#" style={{ textDecoration: 'underline' }}>Facebook</a>
-            <a href="#" style={{ textDecoration: 'underline' }}>Twitter</a>
-            <a href="#" style={{ textDecoration: 'underline' }}>Instagram</a>
+          <div className="social-links" style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" style={{ color: 'white' }}>Facebook</a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" style={{ color: 'white' }}>Twitter</a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" style={{ color: 'white' }}>Instagram</a>
           </div>
         </div>
       </div>
