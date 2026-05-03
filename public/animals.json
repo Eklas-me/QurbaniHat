@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "Deshi Shahi Cow",
+    "type": "Cow",
+    "breed": "Local Deshi",
+    "price": 120000,
+    "weight": 280,
+    "age": 3,
+    "location": "Bogura",
+    "description": "Healthy deshi cow suitable for Qurbani. Well fed with natural food.",
+    "image": "https://images.unsplash.com/photo-1546445317-29f4545e9d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Large Animal"
+  },
+  {
+    "id": 2,
+    "name": "Black Bengal Goat",
+    "type": "Goat",
+    "breed": "Black Bengal",
+    "price": 15000,
+    "weight": 25,
+    "age": 1.5,
+    "location": "Rajshahi",
+    "description": "Premium quality Black Bengal goat, known for excellent meat.",
+    "image": "https://images.unsplash.com/photo-1524024973431-2ad916746881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Small Animal"
+  },
+  {
+    "id": 3,
+    "name": "Australian Cross Cow",
+    "type": "Cow",
+    "breed": "Australian Cross",
+    "price": 250000,
+    "weight": 450,
+    "age": 4,
+    "location": "Dhaka",
+    "description": "Large and healthy Australian Cross cow. Very active.",
+    "image": "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Large Animal"
+  },
+  {
+    "id": 4,
+    "name": "Pabna Breed Cow",
+    "type": "Cow",
+    "breed": "Pabna",
+    "price": 180000,
+    "weight": 350,
+    "age": 3.5,
+    "location": "Pabna",
+    "description": "Famous Pabna breed cow, naturally raised in village.",
+    "image": "https://images.unsplash.com/photo-1606011334315-025e4baab810?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Large Animal"
+  },
+  {
+    "id": 5,
+    "name": "Jamunapari Goat",
+    "type": "Goat",
+    "breed": "Jamunapari",
+    "price": 35000,
+    "weight": 45,
+    "age": 2,
+    "location": "Kushtia",
+    "description": "Big size Jamunapari goat, perfect for family Qurbani.",
+    "image": "https://images.unsplash.com/photo-1542131596-f90117ffbe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Small Animal"
+  },
+  {
+    "id": 6,
+    "name": "Red Sindhi Bull",
+    "type": "Cow",
+    "breed": "Sindhi",
+    "price": 300000,
+    "weight": 550,
+    "age": 4.5,
+    "location": "Chattogram",
+    "description": "Aggressive and beautiful Red Sindhi bull. Super heavy.",
+    "image": "https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Large Animal"
+  }
+]
