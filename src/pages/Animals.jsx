@@ -43,7 +43,7 @@ export default function Animals() {
   };
 
   return (
-    <div style={{ padding: '40px 0' }}>
+    <div className="container" style={{ padding: '40px 0' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap', gap: '20px' }}>
         <h1 style={{ color: 'var(--primary-color)' }}>All Animals</h1>
         

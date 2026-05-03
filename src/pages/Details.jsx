@@ -42,7 +42,7 @@ export default function Details() {
   if (!animal) return null;
 
   return (
-    <div style={{ padding: '40px 0' }}>
+    <div className="container" style={{ padding: '40px 0' }}>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', backgroundColor: 'white', padding: '30px', borderRadius: 'var(--border-radius)', boxShadow: 'var(--box-shadow)' }}>
         
         {/* Animal Details Image */}

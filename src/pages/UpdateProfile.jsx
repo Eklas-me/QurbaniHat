@@ -35,8 +35,8 @@ export default function UpdateProfile() {
   if (!user) return null;
 
   return (
-    <div style={{ padding: '40px 0', maxWidth: '500px', margin: '0 auto' }}>
-      <div className="form-container">
+    <div className="container" style={{ padding: '40px 0' }}>
+      <div className="form-container" style={{ maxWidth: '500px', margin: '0 auto' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '30px', color: 'var(--primary-color)' }}>
           Update Information
         </h2>

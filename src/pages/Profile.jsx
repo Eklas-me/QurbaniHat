@@ -12,10 +12,10 @@ export default function Profile() {
   if (!user) return null;
 
   return (
-    <div style={{ padding: '40px 0', maxWidth: '800px', margin: '0 auto' }}>
+    <div className="container" style={{ padding: '40px 0' }}>
       <h1 style={{ color: 'var(--primary-color)', marginBottom: '30px', textAlign: 'center' }}>My Profile</h1>
       
-      <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: 'var(--border-radius)', boxShadow: 'var(--box-shadow)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: 'var(--border-radius)', boxShadow: 'var(--box-shadow)', display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '800px', margin: '0 auto' }}>
         
         <img 
           src={user.image || 'https://via.placeholder.com/150'} 

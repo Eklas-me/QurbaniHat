@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Toaster position="top-right" />
       <Navbar />
-      <main className="container" style={{ minHeight: '80vh' }}>
+      <main style={{ minHeight: '80vh' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/animals" element={<Animals />} />
