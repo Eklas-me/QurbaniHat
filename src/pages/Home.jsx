@@ -11,7 +11,7 @@ export default function Home() {
     fetch('/animals.json')
       .then(res => res.json())
       .then(data => {
-        setFeaturedAnimals(data.slice(0, 4));
+        setFeaturedAnimals(data.slice(0, 6));
         setLoading(false);
       })
       .catch(err => {
