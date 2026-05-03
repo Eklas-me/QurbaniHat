@@ -23,68 +23,71 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      {/* 1. Hero Section - Full Width and Responsive */}
+      {/* 1. Hero Section - Centered Layout */}
       <section className="hero-section" style={{
         position: 'relative',
-        minHeight: '550px',
+        minHeight: '600px',
         display: 'flex',
         alignItems: 'center',
-        backgroundImage: 'linear-gradient(135deg, rgba(27, 94, 32, 0.95) 0%, rgba(27, 94, 32, 0.6) 100%), url("https://images.unsplash.com/photo-1546445317-29f4545e9d53?q=80&w=2000&auto=format&fit=crop")',
+        justifyContent: 'center',
+        backgroundImage: 'linear-gradient(rgba(13, 46, 16, 0.8), rgba(13, 46, 16, 0.5)), url("https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=2000&auto=format&fit=crop")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        width: '100%'
+        width: '100%',
+        textAlign: 'center'
       }}>
-        <div className="container" style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1.2fr 0.8fr', 
-          gap: '40px', 
-          alignItems: 'center',
-          position: 'relative', 
-          zIndex: 2, 
-          color: 'white',
-          padding: '40px 24px'
-        }}>
-          <div className="hero-content animate__animated animate__fadeInLeft">
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
-              <span style={{ background: 'rgba(255,255,255,0.2)', padding: '5px 12px', borderRadius: '50px', fontSize: '0.8rem', backdropFilter: 'blur(5px)' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, color: 'white' }}>
+          <div className="hero-content animate__animated animate__fadeInDown">
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center' }}>
+              <span style={{ background: 'rgba(255,255,255,0.2)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.85rem', backdropFilter: 'blur(5px)' }}>
                 Certified Farms Only
               </span>
-              <span style={{ background: 'var(--accent-color)', padding: '5px 12px', borderRadius: '50px', fontSize: '0.8rem', color: 'white' }}>
+              <span style={{ background: 'var(--accent-color)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.85rem', color: 'white' }}>
                 Booking Open 2026
               </span>
             </div>
-            <h1 style={{ fontSize: '3.5rem', fontWeight: '800', lineHeight: '1.2', marginBottom: '20px' }}>
-              Bringing the <br/> <span style={{ color: 'var(--accent-color)' }}>Best Livestock</span> <br/> to Your Doorstep.
+            <h1 style={{ fontSize: '4rem', fontWeight: '800', lineHeight: '1.2', marginBottom: '25px' }}>
+              Bringing the <span style={{ color: 'var(--accent-color)' }}>Best Livestock</span> <br/> to Your Doorstep.
             </h1>
-            <p style={{ fontSize: '1.1rem', marginBottom: '30px', opacity: '0.9', maxWidth: '500px' }}>
-              Skip the crowded markets. Browse through verified, healthy, and premium breeds of cows and goats directly from top-tier farms.
+            <p style={{ fontSize: '1.2rem', marginBottom: '40px', opacity: '0.9', maxWidth: '700px', margin: '0 auto 40px' }}>
+              Skip the crowded markets. Browse through hundreds of verified, healthy, and premium breeds of cows and goats directly from top-tier farms.
             </p>
-            <div style={{ display: 'flex', gap: '20px' }}>
-              <Link to="/animals" className="btn btn-accent" style={{ padding: '15px 30px', fontSize: '1rem' }}>
-                Explore Collection <ChevronRight size={18} />
+            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '50px' }}>
+              <Link to="/animals" className="btn btn-accent" style={{ padding: '18px 36px', fontSize: '1.1rem' }}>
+                Explore Collection <ChevronRight size={20} />
               </Link>
             </div>
-          </div>
-          
-          <div className="hero-stats animate__animated animate__fadeInRight" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-            {[
-              { icon: <Award size={24} />, text: "100% Organic Feed" },
-              { icon: <ShieldCheck size={24} />, text: "Vet Verified" },
-              { icon: <Truck size={24} />, text: "Safe Delivery" },
-              { icon: <Info size={24} />, text: "Fixed Price" }
-            ].map((stat, i) => (
-              <div key={i} style={{ 
-                background: 'rgba(255,255,255,0.1)', 
-                backdropFilter: 'blur(10px)', 
-                padding: '20px', 
-                borderRadius: '20px',
-                textAlign: 'center',
-                border: '1px solid rgba(255,255,255,0.2)'
-              }}>
-                <div style={{ color: 'var(--accent-color)', marginBottom: '8px', display: 'flex', justifyContent: 'center' }}>{stat.icon}</div>
-                <div style={{ fontSize: '0.8rem', fontWeight: '600' }}>{stat.text}</div>
-              </div>
-            ))}
+            
+            {/* Badges centered below */}
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              gap: '20px', 
+              flexWrap: 'wrap',
+              maxWidth: '900px',
+              margin: '0 auto'
+            }}>
+              {[
+                { icon: <Award size={24} />, text: "100% Organic Feed" },
+                { icon: <ShieldCheck size={24} />, text: "Vet Verified" },
+                { icon: <Truck size={24} />, text: "Safe Delivery" },
+                { icon: <Info size={24} />, text: "Fixed Price" }
+              ].map((stat, i) => (
+                <div key={i} style={{ 
+                  background: 'rgba(255,255,255,0.1)', 
+                  backdropFilter: 'blur(10px)', 
+                  padding: '15px 25px', 
+                  borderRadius: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  border: '1px solid rgba(255,255,255,0.2)'
+                }}>
+                  <div style={{ color: 'var(--accent-color)' }}>{stat.icon}</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '600' }}>{stat.text}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
